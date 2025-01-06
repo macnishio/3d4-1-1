@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Engine, Scene } from '@babylonjs/core';
 import { useSceneSetup } from '../hooks/useSceneSetup';
-import { Character, CharacterType } from '../models/characters';
+import { Character } from '../models/characters';
 
 interface SceneViewerProps {
   characters: Character[];
   onCharacterClick?: (character: Character) => void;
+  sceneId: string;
 }
 
 const SceneViewer: React.FC<SceneViewerProps> = ({ characters, onCharacterClick }) => {

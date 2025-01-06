@@ -151,4 +151,17 @@ export const defaultCharacters: Record<CharacterRole, Character> = {
     interactionZone: {
       radius: 2.5,
       height: 3.5,
-      trig
+      triggerDistance: 2
+    },
+    metadata: {
+      description: 'Office mail delivery specialist',
+      dialogues: [
+        { id: 'd1', text: 'Got some mail for you!' }
+      ],
+      availability: {
+        workDays: [1, 2, 3, 4, 5],
+        workHours: { start: 9, end: 17 }
+      }
+    }
+  },
+}

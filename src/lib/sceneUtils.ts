@@ -37,11 +37,13 @@ export const optimizeScene = (scene: Scene) => {
   scene.blockMaterialDirtyMechanism = true;
 };
 
-export const loadTexture = async (scene: Scene, path: string): Promise<Texture> => {
+export const createTexturePromise = (path: string, scene: Scene): Promise<Texture> => {
   return new Promise((resolve, reject) => {
-    const texture = new Texture(path, scene, true, false);
+    const texture = new Texture(path, scene, true, false, Texture.NEAREST_SAMPLINGMODE, undefined, (message, exception) => {
+      reject(exception);
+    });
+
     texture.onLoadObservable.addOnce(() => resolve(texture));
-    texture.onErrorObservable.addOnce((error) => reject(error));
   });
 };
 
